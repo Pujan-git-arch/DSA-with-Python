@@ -18,13 +18,22 @@ class Hashtable:
         h = self.get_hash(key)
         return self.arr[h]   
     
+    def __delitem__(self,key):
+        h = self.get_hash(key)
+        self.arr[h] = None
+    
 t = Hashtable()
 print(t.get_hash("march 6")) 
 print(t.get_hash("dec 270")) 
+print(t.get_hash("june 26"))
 t["march 6"] = 100         # this is same as t.__setitem__("march 6", 100) and t["march 6"] is same as t.__getitem__("march 6")
 t["dec 270"] = 200
+t["dec 270"] = 300   # [[This will overwrite the value of t["dec 270"] to 300 because we are storing the value in the array at the respective hash index.]]
+t["june 26"] = 400
 print(t["march 6"])
-print(t["dec 270"])  # [[With this we need to give t["march 6"] = 100 before t["march 6"] otherwise it will return None because we are not storing the value in the array.]]
+print(t["june 26"])
+print(t["dec 270"])# [[With this we need to give t["march 6"] = 100 before t["march 6"] otherwise it will return None because we are not storing the value in the array.]]
+del t["march 6"] # [[This will delete the value of t["march 6"] and set it to None because we are setting the value in the array at the respective hash index to None.]]
 print(t.arr) # [[This will show the array with the values stored at the respective hash index.]]
 
     
