@@ -48,7 +48,7 @@ print(t["march 6"])
 print(t["june 26"])
 print(t["dec 270"])
 print(t["march 17"])
-
+print(t["dec 270"])
 
 t["march 6"] = 700
 del t["march 17"]
