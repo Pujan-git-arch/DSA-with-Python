@@ -6,7 +6,7 @@
 weather_dict = {}
 with open("nyc_weather.csv","r") as f:
     for line in f:
-        tokens = line.split(",")
+        tokens = line.split(",") # [[This will split the line into tokens based on comma and return a list of tokens.]]
         try:
             date = tokens[0]
             temperature = int(tokens[1])
