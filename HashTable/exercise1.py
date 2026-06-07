@@ -16,3 +16,4 @@ with open("nyc_weather.csv","r") as f:
 print(arr)
 print("Average temperature in first week of Jan:", sum(arr[:7])/7)  
 print("Maximum temperature in first 10 days of Jan:", max(arr[:10]))
+print("Data structure used: List")
