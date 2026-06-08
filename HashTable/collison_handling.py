@@ -52,4 +52,5 @@ print(t["dec 270"])
 
 t["march 6"] = 700
 del t["march 17"]
+del t["dec 270"]
 print(t.arr)
