@@ -27,14 +27,19 @@ class Stack:
         return len(self.stack)
     
 s = Stack()
-s.push(1)
-s.push(2)
-s.push(3)
-print("the top element is",s.peek())  # Output: 3
+# s.push(1)
+# s.push(2)
+# s.push(3)
+# print("the top element is",s.peek())  # Output: 3
 
-print("the size of the stack is",s.size(),"and the elements are",s.stack)  # Output: 3
-print( "the element to be poped is",s.pop())   # Output: 3
-print("the last element is",s.peek())  # Output: 2
-print("the size of the stack is",s.size())  # Output: 2
-print(" The elements of the stack are",s.stack)  # Output: deque([1, 2])
+# print("the size of the stack is",s.size(),"and the elements are",s.stack)  # Output: 3
+# print( "the element to be poped is",s.pop())   # Output: 3
+# print("the last element is",s.peek())  # Output: 2
+# print("the size of the stack is",s.size())  # Output: 2
+# print(" The elements of the stack are",s.stack)  # Output: deque([1, 2])
 
+s.push({'company': 'Google', 'timestamp': '2024-06-01 10:00:00', 'price': 1500})
+s.push({'company': 'Google', 'timestamp': '2024-06-01 11:00:00', 'price': 1500})
+s.push({'company': 'Google', 'timestamp': '2024-06-01 12:00:00', 'price': 1500})
+print("the top element is",s.peek())  # Output: {'company': 'Google', 'timestamp': '2024-06-01 12:00:00', 'price': 1500}
+print("the size of the stack is",s.size(),"and the elements are",s.stack)  # Output: 5
