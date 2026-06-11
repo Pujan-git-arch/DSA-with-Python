@@ -31,6 +31,27 @@ class BinarySearchTreeNode:
             elements += self.right.in_order_traversal()
         return elements
     
+    def pre_order_traversal(self):
+        elements = []
+        # The pre-order traversal of a binary search tree is a depth-first traversal that visits the current node first, then the left subtree, and finally the right subtree. This means that the elements will be returned in the order they were added to the tree.
+        # visiting the current node first ensures that we get the elements in the order they were added to the tree, and visiting the left subtree before the right subtree ensures that we get all the elements in the left subtree before any elements in the right subtree.
+        elements.append(self.data) # add the data of the current node to the list of elements #Example: if the current node has data 10, then add 10 to the list of elements
+        if self.left:
+            elements += self.left.pre_order_traversal() # if the current node has a left child, then recursively call the pre_order_traversal method on the left child and add the result to the list of elements #Example: if the current node has a left child with data 5, then call the pre_order_traversal method on that child and add the result to the list of elements
+        if self.right:
+            elements += self.right.pre_order_traversal() # if the current node has a right child, then recursively call the pre_order_traversal method on the right child and add the result to the list of elements #Example: if the current node has a right child with data 15, then call the pre_order_traversal method on that child and add the result to the list of elements
+        return elements
+    
+    def post_order_traversal(self):
+        elements = []
+        # The post-order traversal of a binary search tree is a depth-first traversal that visits the left subtree, then the right subtree, and finally the current node. This means that the elements will be returned in the order they were removed from the tree.
+        if self.left:
+            elements += self.left.post_order_traversal() # if the current node has a left child, then recursively call the post_order_traversal method on the left child and add the result to the list of elements #Example: if the current node has a left child with data 5, then call the post_order_traversal method on that child and add the result to the list of elements
+        if self.right:
+            elements += self.right.post_order_traversal() # if the current node has a right child, then recursively call the post_order_traversal method on the right child and add the result to the list of elements #Example: if the current node has a right child with data 15, then call the post_order_traversal method on that child and add the result to the list of elements
+        elements.append(self.data) # add the data of the current node to the list of elements #Example: if the current node has data 10, then add 10 to the list of elements
+        return elements
+
     def search(self, value):
         if self.data == value:
             return True
@@ -44,6 +65,18 @@ class BinarySearchTreeNode:
                 return self.right.search(value)
             else:
                 return False
+            
+    def find_min(self):
+        if self.left is None:
+            return self.data
+        else:
+            return self.left.find_min()
+        
+    def find_max(self):
+        if self.right is None:
+            return self.data
+        else:
+            return self.right.find_max()
 
 def build_tree(elements):
     root = BinarySearchTreeNode(elements[0])
@@ -64,3 +97,7 @@ if __name__ == '__main__':
     print(strings_tree.in_order_traversal())
     print(strings_tree.search("USA"))
     print(strings_tree.search("Canada"))
+    print(numbers_tree.find_min())
+    print(numbers_tree.find_max())
+    print(numbers_tree.pre_order_traversal())
+    print(numbers_tree.post_order_traversal())
