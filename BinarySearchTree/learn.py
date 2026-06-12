@@ -77,6 +77,28 @@ class BinarySearchTreeNode:
             return self.data
         else:
             return self.right.find_max()
+        
+    def delete_node(self, value):
+        if value < self.data:
+            if self.left:
+                self.left = self.left.delete_node(value)
+        elif value > self.data:
+            if self.right:
+                self.right = self.right.delete_node(value)
+        else:
+            if self.left is None and self.right is None:
+                return None
+            if self.left is None:
+                return self.right
+            if self.right is None:
+                return self.left
+            
+            min_value = self.right.find_min()
+            self.data = min_value
+            self.right = self.right.delete_node(min_value)
+        return self
+    
+        
 
 def build_tree(elements):
     root = BinarySearchTreeNode(elements[0])
@@ -93,11 +115,15 @@ if __name__ == '__main__':
     print(numbers_tree.in_order_traversal())
     print(numbers_tree.search(20))
     print(numbers_tree.search(2))
-    strings_tree = build_tree(strings)
-    print(strings_tree.in_order_traversal())
-    print(strings_tree.search("USA"))
-    print(strings_tree.search("Canada"))
+    # strings_tree = build_tree(strings)
+    # print(strings_tree.in_order_traversal())
+    # print(strings_tree.search("USA"))
+    # print(strings_tree.search("Canada"))
     print(numbers_tree.find_min())
     print(numbers_tree.find_max())
     print(numbers_tree.pre_order_traversal())
     print(numbers_tree.post_order_traversal())
+    
+    print(numbers_tree.delete_node(20))
+    print(numbers_tree.in_order_traversal())
+     
