@@ -35,6 +35,8 @@ class Graph:
         if start == end:
             return path
         
+        # “Does the current node (start) exist in the graph as a key?”
+
         if start not in self.graph_dict:  
             return None
         
