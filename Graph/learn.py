@@ -48,19 +48,24 @@ class Graph:
                 if sp:
                     if shortest_path is None or len(sp) < len(shortest_path):
                         shortest_path = sp
-        return shortest_path              
-        
-        
-       
-        
-                    
-                    
-                
-            
-            
-        
-        
+        return shortest_path   
     
+    def graph_traversal(self, start, visited=None):
+        if visited is None:
+            visited = []
+
+        visited.append(start)
+
+        # if node has no outgoing edges, stop
+        if start not in self.graph_dict:
+            return visited
+
+        for neighbor in self.graph_dict[start]:
+            if neighbor not in visited:
+                self.graph_traversal(neighbor, visited)
+
+            return visited
+     
                 
 if __name__ == '__main__':
     routes = [
@@ -78,3 +83,6 @@ if __name__ == '__main__':
     end = "New York"
     print (f"Path between {start} and {end} ::", route_graph.get_paths(start,end))
     print (f" Shortest Path between {start} and {end} ::", route_graph.get_shortest_path(start,end))
+    print(route_graph.graph_traversal("Mumbai"))
+    print(route_graph.graph_traversal("Paris"))
+
