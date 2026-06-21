@@ -1,20 +1,54 @@
+# Function to swap two elements in a list
+def swap(arr, i, j):
+    # Store first element in a temporary variable
+    temp = arr[i]
+
+    # Put second element at the position of first element
+    arr[i] = arr[j]
+
+    # Put the temporary value at the position of second element
+    arr[j] = temp
+
+
+# Function to sort the list using Bubble Sort
 def bubble_sort(elements):
-  size = len(elements)
-  
-  for i in range(size-1): 
-    swapped = False           # to eliminate  already sorted array we fist flag it as unswapped.. such that after the 1st iteration the list is still unswapped and it breaks from the outer loop
-    for j in range(size-1-i):  # size-1-i is in the sense that after each ith iteration in outer loop the last two elements will be sorted already
-         if  elements[j] > elements[j+1]:
-            tmp = elements[j]
-            elements[j] = elements[j+1]
-            elements[j+1] = tmp  
-            swapped = True
-    if not swapped:
-        break
+    # Find total number of elements in the list
+    size = len(elements)
+
+    # Outer loop controls the number of passes
+    # After each pass, the largest unsorted element
+    # moves to its correct position at the end
+    for i in range(size - 1):
+
+        # Assume no swapping will happen in this pass
+        swapped = False
+
+        # Inner loop compares adjacent elements
+        # size-1-i because the last i elements are already sorted
+        for j in range(size - 1 - i):
+
+            # If current element is greater than the next element
+            # swap them
+            if elements[j] > elements[j + 1]:
+                swap(elements, j, j + 1)
+
+                # Mark that a swap has occurred
+                swapped = True
+
+        # If no swapping occurred in the entire pass,
+        # the list is already sorted, so stop early
+        if not swapped:
+            break
 
 
+# Program execution starts here
 if __name__ == '__main__':
-    elements = [5,9,2,1,67,34,88,34]
-    
+
+    # Unsorted list
+    elements = [5, 9, 2, 1, 67, 34, 88, 34]
+
+    # Call Bubble Sort function
     bubble_sort(elements)
-    print(elements)
+
+    # Print the sorted list
+    print("Sorted List:", elements)
